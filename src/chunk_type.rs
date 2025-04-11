@@ -1,3 +1,4 @@
+use core::error;
 use std::convert::TryFrom;
 use std::fmt::Display;
 use std::str::FromStr;
@@ -19,6 +20,29 @@ impl Display for ChunkType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {}
 }
 
+impl ChunkType {
+    fn bytes(&self) -> [u8; 4] {
+        return [3, 23, 5, 6];
+    }
+
+    fn is_valid(&self) -> bool {
+        return true;
+    }
+
+    fn is_critical(&self) -> bool {
+        return true;
+    }
+    fn is_public(&self) -> bool {
+        return true;
+    }
+
+    fn is_reserved_bit_valid(&self) -> bool {
+        return true;
+    }
+    fn is_safe_to_copy(&self) -> bool {
+        return true;
+    }
+}
 #[allow(unused_variables)]
 fn main() {
     #[cfg(test)]
