@@ -1,4 +1,25 @@
-#![allow(unused_variables)]
+use std::convert::TryFrom;
+use std::fmt::Display;
+use std::str::FromStr;
+
+#[derive(PartialEq, Eq)]
+struct ChunkType;
+
+impl TryFrom<[u8; 4]> for ChunkType {
+    type Error = Box<dyn std::error::Error>;
+    fn try_from(value: [u8; 4]) -> Result<Self, Self::Error> {}
+}
+
+impl FromStr for ChunkType {
+    type Err = Box<dyn std::error::Error>;
+    fn from_str(s: &str) -> Result<Self, Self::Err> {}
+}
+
+impl Display for ChunkType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {}
+}
+
+#[allow(unused_variables)]
 fn main() {
     #[cfg(test)]
     mod tests {
