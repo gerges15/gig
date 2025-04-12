@@ -1,17 +1,19 @@
 use std::convert::TryFrom;
 
-use std::fmt::{Display, Error};
+use std::fmt::Display;
 
 use std::str::FromStr;
 
 #[derive(PartialEq, Eq, Debug)]
-struct ChunkType;
+struct ChunkType {
+    bytes: [u8; 4],
+}
 
 impl TryFrom<[u8; 4]> for ChunkType {
     type Error = ();
     fn try_from(value: [u8; 4]) -> Result<Self, Self::Error> {
         if true {
-            return Result::Ok(ChunkType);
+            return Result::Ok(ChunkType { bytes: value });
         } else {
             return Result::Err(());
         }
@@ -22,7 +24,9 @@ impl FromStr for ChunkType {
     type Err = ();
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         if true {
-            return Result::Ok(ChunkType);
+            return Result::Ok(ChunkType {
+                bytes: [6, 3, 23, 67],
+            });
         } else {
             return Result::Err(());
         }
@@ -35,9 +39,10 @@ impl Display for ChunkType {
     }
 }
 
+#[allow(dead_code)]
 impl ChunkType {
     fn bytes(&self) -> [u8; 4] {
-        return [3, 23, 5, 6];
+        return self.bytes;
     }
 
     fn is_valid(&self) -> bool {
@@ -59,6 +64,7 @@ impl ChunkType {
     }
 }
 #[allow(unused_variables)]
+
 fn main() {}
 
 #[cfg(test)]
