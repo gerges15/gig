@@ -23,10 +23,12 @@ impl TryFrom<[u8; 4]> for ChunkType {
 impl FromStr for ChunkType {
     type Err = ();
     fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let mut bytes: [u8; 4] = [0, 0, 0, 0];
+        let slice_bytes: &[u8] = s.as_bytes();
+
+        bytes.clone_from_slice(slice_bytes);
         if true {
-            return Result::Ok(ChunkType {
-                bytes: [6, 3, 23, 67],
-            });
+            return Result::Ok(ChunkType { bytes: bytes });
         } else {
             return Result::Err(());
         }
