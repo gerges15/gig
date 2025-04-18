@@ -13,9 +13,9 @@ impl TryFrom<[u8; 4]> for ChunkType {
     type Error = ();
     fn try_from(value: [u8; 4]) -> Result<Self, Self::Error> {
         if true {
-            return Result::Ok(ChunkType { bytes: value });
+            return Ok(ChunkType { bytes: value });
         } else {
-            return Result::Err(());
+            return Err(());
         }
     }
 }
@@ -28,16 +28,16 @@ impl FromStr for ChunkType {
 
         bytes.clone_from_slice(slice_bytes);
         if true {
-            return Result::Ok(ChunkType { bytes: bytes });
+            return Ok(ChunkType { bytes: bytes });
         } else {
-            return Result::Err(());
+            return Err(());
         }
     }
 }
 
 impl Display for ChunkType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        return Result::Ok(());
+        return Ok(());
     }
 }
 
